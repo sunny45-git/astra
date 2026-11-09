@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="astraStar" x1="4" y1="4" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00f5ff" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#02040a" />
+  <rect x="1" y="1" width="62" height="62" rx="15" stroke="rgba(0, 245, 255, 0.3)" stroke-width="1.5" />
+  <path d="M32 6L37 27L58 32L37 37L32 58L27 37L6 32L27 27Z" fill="url(#astraStar)" filter="url(#glow)"/>
+  <circle cx="32" cy="32" r="5" fill="#ffffff" filter="url(#glow)"/>
+</svg>
