@@ -1,5 +1,52 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { PortfolioData } from '../types';
+import { PortfolioData, SkillItem, Testimonial } from '../types';
+import { projectsData } from '../data/projects';
+import { servicesData } from '../data/services';
+import { skillsData } from '../data/skills';
+
+const fallbackSkills: SkillItem[] = skillsData.flatMap((cat) =>
+  cat.skills.map((s, idx) => ({
+    ...s,
+    id: s.id || `${cat.category.toLowerCase()}-${idx}`,
+    category: cat.category,
+  }))
+);
+
+const fallbackTestimonials: Testimonial[] = [
+  {
+    id: "test-1",
+    clientName: "Adv. Rajesh V. Sharma",
+    clientRole: "Senior Advocate & Managing Partner",
+    organization: "Sharma & Associates Law Chambers",
+    avatar: "",
+    quote: "ASTRA built an authoritative, high-prestige digital portal for our law chambers that immediately commanded respect from corporate clients. The confidential intake workflows and typography exceeded our highest expectations.",
+    rating: 5,
+    visible: true,
+    projectRef: "Legal Chamber Practice Portal"
+  },
+  {
+    id: "test-2",
+    clientName: "K. Mohan Rao",
+    clientRole: "Director of Public Affairs",
+    organization: "Civic Leadership Initiative",
+    avatar: "",
+    quote: "The constituency portal developed by ASTRA transformed how our leadership communicates public progress and grievance handling. It effortlessly withstood heavy traffic during public announcements without a single slowdown.",
+    rating: 5,
+    visible: true,
+    projectRef: "Constituency Public Portal"
+  },
+  {
+    id: "test-3",
+    clientName: "Dr. Ananya Sen",
+    clientRole: "Managing Trustee",
+    organization: "Basanthi Foundation Trust",
+    avatar: "",
+    quote: "Our philanthropic foundation needed a platform that conveyed transparency, empathy, and measurable impact to donors. ASTRA delivered a stunning, emotionally resonant website that increased volunteer signups significantly.",
+    rating: 5,
+    visible: true,
+    projectRef: "BASANTHI FOUNDATION"
+  }
+];
 
 interface PortfolioContextType {
   data: PortfolioData | null;
@@ -56,9 +103,9 @@ const fallbackData: PortfolioData = {
     show3DCore: true,
     availabilityText: "Available for Q1/Q2 Projects",
   },
-  projects: [],
-  services: [],
-  skills: [],
+  projects: projectsData,
+  services: servicesData,
+  skills: fallbackSkills,
   process: [
     {
       step: "01",
@@ -182,7 +229,7 @@ const fallbackData: PortfolioData = {
       benefit: "Complete peace of mind knowing your website is cared for long after launch."
     }
   ],
-  testimonials: [],
+  testimonials: fallbackTestimonials,
   settings: {
     siteTitle: "ASTRA | Premium Digital Experiences & 3D Web Solutions",
     seoDescription: "Ideas Beyond Limits. Award-winning bespoke 3D websites, civic platforms, legal portals, and full-stack web applications by ASTRA.",

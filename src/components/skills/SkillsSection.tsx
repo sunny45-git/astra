@@ -18,7 +18,7 @@ export const SkillsSection: React.FC = () => {
   ];
 
   const displayedSkills = allSkills.filter(
-    (s) => activeTab === 'ALL' || s.category === activeTab
+    (s) => activeTab === 'ALL' || (s.category && s.category.toUpperCase() === activeTab)
   );
 
   return (
